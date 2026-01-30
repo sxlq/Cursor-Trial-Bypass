@@ -1136,7 +1136,8 @@ function Invoke-CursorInitialization {
                 Write-Host "$GREEN✅ [Success]$NC Deleted file: $file"
             }
             catch {
-                Write-Host "$RED❌ [Error]$NC Failed to delete file $file: $($_.Exception.Message)"
+                # FIXED: Use ${file} to properly escape the variable
+                Write-Host "$RED❌ [Error]$NC Failed to delete file ${file}: $($_.Exception.Message)"
             }
         } else {
             Write-Host "$YELLOW⚠️  [Skipping]$NC File doesn't exist, skipping deletion: $file"
@@ -1150,7 +1151,8 @@ function Invoke-CursorInitialization {
             Write-Host "$GREEN✅ [Success]$NC Cleared folder contents: $folderToCleanContents"
         }
         catch {
-            Write-Host "$RED❌ [Error]$NC Failed to clear folder $folderToCleanContents: $($_.Exception.Message)"
+            # FIXED: Use ${folderToCleanContents} to properly escape the variable
+            Write-Host "$RED❌ [Error]$NC Failed to clear folder ${folderToCleanContents}: $($_.Exception.Message)"
         }
     } else {
         Write-Host "$YELLOW⚠️  [Skipping]$NC Folder doesn't exist, skipping clear: $folderToCleanContents"
@@ -1163,7 +1165,8 @@ function Invoke-CursorInitialization {
             Write-Host "$GREEN✅ [Success]$NC Deleted folder: $folderToDeleteCompletely"
         }
         catch {
-            Write-Host "$RED❌ [Error]$NC Failed to delete folder $folderToDeleteCompletely: $($_.Exception.Message)"
+            # FIXED: Use ${folderToDeleteCompletely} to properly escape the variable
+            Write-Host "$RED❌ [Error]$NC Failed to delete folder ${folderToDeleteCompletely}: $($_.Exception.Message)"
         }
     } else {
         Write-Host "$YELLOW⚠️  [Skipping]$NC Folder doesn't exist, skipping deletion: $folderToDeleteCompletely"
